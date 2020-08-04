@@ -1,35 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int aux[100001];
-
 int main() {
-	int n, ans=0, maxatt=0;
-	stack<int> in;
+	int n, ans=0;
+	vector<int> in;
+	stack<int> stk;
 
 	cin >> n;
-
-	for(int i=0; i<n; i++){
-		int aux;
-		cin >> aux;
-		if(in.size() == 0) {
-			in.push(aux);
-		}else if(in.size() == 1) {
-			in.push(aux);
-			ans++;
-		}else if(in.size() > 1) {
-			maxatt = in.top();
-			in.pop();
-			ans++;
-			if(in.top() > maxatt and maxatt < aux) {
-				ans++;
-				in.pop();
-			}else {
-				in.pop();
-			}
-			in.push(aux);
-		}
+	in.resize(n);
+	
+	for(int i=0; i<n; i++) {
+		cin >> in[i];
 	}
 
+	for(int i=0; i<n; i++) {
+		int count = 0;
+		while(!stk.empty() and stk.top() < in[i]) {
+				stk.pop();
+				count++;
+				ans += !stk.empty();
+		}
+		ans += count;
+		stk.push(in[i]);
+	}
+	ans += stk.size() - 1; 
 	cout << ans << endl;
+	return 0;
 }
