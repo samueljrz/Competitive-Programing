@@ -1,32 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define FOR(i,a,b) for(i= a ; i < b ; ++i)
-#define rep(i,n) FOR(i,0,n)
 #define min(a,b) ((a)<(b)?(a):(b))
-#define pln(n) printf("%lld\n",n)
-#define sl(n) scanf("%lld",&n)
 #define mod (int)(1e9 + 7)
 #define ll long long int
-ll modpow(ll a,ll n,ll temp){ll res=1,y=a;while(n>0){if(n&1)res=(res*y)%temp;y=(y*y)%temp;n/=2;}return res%temp;} 
+
 ll arr[100000],val[1000006];
 int main()
 {
 	ll t,cnt,ans,n,k,i,pnt,calc;
-	sl(t);
+	cin >>t;
 	while(t--)
 	{
 		ans=mod;
 		cnt=0;
-		sl(n);
-		sl(k);
-		FOR(i,1,k+1)
+		cin >> n;
+		cin >> k;
+		for(int i=1; k+1; i++)
 			arr[i]=0;
-		rep(i,n)
+		for(int i=0; i<n; i++)
 		{
-			sl(val[i]);
+			cin >> val[i];
 		}
 		pnt=0;
-		rep(i,n)
+		for(int i=0; i<n; i++)
 		{
 			calc=val[i];
 			if(arr[calc]==0)
@@ -80,7 +76,7 @@ int main()
 		}
 		if(ans==mod)
 			ans=0;
-		pln(ans);
+		cout << ans << endl;
 	}
 	return 0;
 }
